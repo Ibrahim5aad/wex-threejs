@@ -1,5 +1,5 @@
 {
-  "name": "@xbim/wex-threejs",
+  "name": "wex-threejs",
   "version": "1.0.0",
   "description": "React Three.js component library for viewing WexBIM 3D building models",
   "type": "module",

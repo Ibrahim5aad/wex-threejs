@@ -2,7 +2,7 @@
   "name": "@xbim/wex-threejs-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "Demo application for @xbim/wex-threejs",
+  "description": "Demo application for wex-threejs",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@xbim/wex-threejs": "*",
+    "wex-threejs": "*",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "three": "^0.182.0"

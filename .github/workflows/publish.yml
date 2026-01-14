@@ -85,7 +85,7 @@ jobs:
             
             ### Installation
             ```bash
-            npm install @xbim/wex-threejs@${{ steps.version.outputs.version_number }}
+            npm install wex-threejs@${{ steps.version.outputs.version_number }}
             ```
           files: |
             packages/wex-threejs/dist/**

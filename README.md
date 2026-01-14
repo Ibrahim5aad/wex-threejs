@@ -8,7 +8,7 @@ A React Three.js library for viewing WexBIM 3D models.
 
 This is a monorepo containing:
 
-- **`packages/wex-threejs`** - The core React component library (published as `@xbim/wex-threejs`)
+- **`packages/wex-threejs`** - The core React component library (published as `wex-threejs`)
 - **`packages/demo`** - Demo application showcasing the library
 
 ## Getting Started
@@ -51,12 +51,12 @@ npm run build:all
 ## Using the Library
 
 ```bash
-npm install @xbim/wex-threejs three
+npm install wex-threejs three
 ```
 
 ```tsx
 import { useRef } from 'react';
-import { WexViewer, ViewerToolbar, BuiltInButtons } from '@xbim/wex-threejs';
+import { WexViewer, ViewerToolbar, BuiltInButtons } from 'wex-threejs';
 
 function App() {
   const viewerRef = useRef(null);

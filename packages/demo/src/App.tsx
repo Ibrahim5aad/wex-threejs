@@ -7,18 +7,18 @@ import {
   ViewerToolbar,
   BuiltInButtons,
   Icons,
-} from '@xbim/wex-threejs';
+} from 'wex-threejs';
 import type {
   WexViewerRef,
   LoadedModel,
   ToolbarItem,
   PickEventArgs,
-} from '@xbim/wex-threejs';
+} from 'wex-threejs';
 // Import library styles from source for dev mode
-import '../../wex-threejs/src/ui/theme.css';
-import '../../wex-threejs/src/ui/viewer-toolbar.css';
-import '../../wex-threejs/src/ui/file-loader-panel.css';
-import '../../wex-threejs/src/ui/model-manager-panel.css';
+import 'wex-threejs/src/ui/theme.css';
+import 'wex-threejs/src/ui/viewer-toolbar.css';
+import 'wex-threejs/src/ui/file-loader-panel.css';
+import 'wex-threejs/src/ui/model-manager-panel.css';
 import './App.css';
 
 const { Folder: IconFolder, Package: IconPackage } = Icons;

@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=@xbim/wex-threejs-demo",
-    "dev:lib": "npm run dev --workspace=@xbim/wex-threejs",
-    "build": "npm run build --workspace=@xbim/wex-threejs",
+    "dev:lib": "npm run dev --workspace=wex-threejs",
+    "build": "npm run build --workspace=wex-threejs",
     "build:demo": "npm run build --workspace=@xbim/wex-threejs-demo",
     "build:all": "npm run build && npm run build:demo"
   },

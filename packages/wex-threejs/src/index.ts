@@ -1,5 +1,5 @@
 // =============================================================================
-// @xbim/wex-threejs - React Three.js WexBIM Viewer
+// wex-threejs - React Three.js WexBIM Viewer
 // =============================================================================
 
 // Import styles for bundling

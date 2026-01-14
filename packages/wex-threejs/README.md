@@ -1,18 +1,18 @@
-# @xbim/wex-threejs
+# wex-threejs
 
 A React component library for viewing WexBIM 3D building models using Three.js.
 
 ## Installation
 
 ```bash
-npm install @xbim/wex-threejs three
+npm install wex-threejs three
 ```
 
 ## Quick Start
 
 ```tsx
-import { WexViewer, ViewerToolbar, BuiltInButtons } from '@xbim/wex-threejs';
-import '@xbim/wex-threejs/styles.css';
+import { WexViewer, ViewerToolbar, BuiltInButtons } from 'wex-threejs';
+import 'wex-threejs/styles.css';
 
 function App() {
   const viewerRef = useRef(null);
@@ -104,7 +104,7 @@ A panel for managing loaded models.
 ## Built-in Toolbar Buttons
 
 ```tsx
-import { BuiltInButtons } from '@xbim/wex-threejs';
+import { BuiltInButtons } from 'wex-threejs';
 
 // Navigation
 BuiltInButtons.createHomeButton(viewerRef)
@@ -128,7 +128,7 @@ BuiltInButtons.createClearSelectionButton(viewerRef)
 The library includes a set of minimal, monochrome SVG icons:
 
 ```tsx
-import { Icons } from '@xbim/wex-threejs';
+import { Icons } from 'wex-threejs';
 
 <Icons.Home size={24} />
 <Icons.ZoomFit size={24} />
