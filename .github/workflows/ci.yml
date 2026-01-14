@@ -12,7 +12,7 @@ on:
       - '.gitignore'
 
 jobs:
-  test:
+  validate:
     runs-on: ubuntu-latest
     
     steps:
