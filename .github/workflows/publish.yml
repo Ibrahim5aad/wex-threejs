@@ -2,15 +2,14 @@ name: Build and Publish
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'packages/wex-threejs/**'
-      - '.github/workflows/publish.yml'
-      - 'package.json'
-  release:
-    types: [created]
+    tags:
+      - 'v*'  # Triggers on tags like v1.0.0, v1.2.3, etc.
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g., v1.0.0)'
+        required: true
+        type: string
 
 jobs:
   build-and-publish:
@@ -32,10 +31,26 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Configure Git
+      - name: Extract version from tag
+        id: version
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION="${GITHUB_REF#refs/tags/}"
+          fi
+          # Remove 'v' prefix if present
+          VERSION_NUMBER="${VERSION#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "version_number=$VERSION_NUMBER" >> $GITHUB_OUTPUT
+          echo "Tag version: $VERSION"
+          echo "Package version: $VERSION_NUMBER"
+
+      - name: Update package version
+        run: |
+          cd packages/wex-threejs
+          npm version ${{ steps.version.outputs.version_number }} --no-git-tag-version
+          echo "Updated package.json version to ${{ steps.version.outputs.version_number }}"
 
       - name: Install dependencies
         run: npm ci
@@ -46,30 +61,28 @@ jobs:
       - name: Build package
         run: npm run build --workspace=@xbim/wex-threejs
 
-      - name: Check if version changed
-        id: version-check
-        run: |
-          cd packages/wex-threejs
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
-          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-          echo "Current version: $CURRENT_VERSION"
-
       - name: Publish to npm
-        if: |
-          github.event_name == 'release' || 
-          (github.event_name == 'push' && github.ref == 'refs/heads/main')
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd packages/wex-threejs
           npm publish --access public
-        continue-on-error: true
 
       - name: Create GitHub Release
-        if: github.event_name == 'release'
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: Release ${{ steps.version.outputs.version }}
+          body: |
+            ## Changes in ${{ steps.version.outputs.version }}
+            
+            See [CHANGELOG.md](../../../CHANGELOG.md) for details.
+            
+            ### Installation
+            ```bash
+            npm install @xbim/wex-threejs@${{ steps.version.outputs.version_number }}
+            ```
           files: |
             packages/wex-threejs/dist/**
           draft: false
-          prerelease: false
+          prerelease: ${{ contains(steps.version.outputs.version, '-') }}
