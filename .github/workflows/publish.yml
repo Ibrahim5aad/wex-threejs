@@ -41,10 +41,7 @@ jobs:
         run: npm ci
 
       - name: Run linter
-        run: |
-          cd packages/wex-threejs
-          npm run lint || echo "Linter not configured, skipping..."
-        continue-on-error: true
+        run: npm run lint --workspace=@xbim/wex-threejs
 
       - name: Build package
         run: npm run build --workspace=@xbim/wex-threejs

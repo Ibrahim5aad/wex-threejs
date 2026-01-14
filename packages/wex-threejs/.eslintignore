@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+dist/
+
+# Build outputs
+*.cjs
+*.js
+!vite.config.ts
+
+# Generated files
+*.d.ts
+
+# Worker files (handled separately)
+**/wexBimWorker.js
+**/wexBimLoader.js
