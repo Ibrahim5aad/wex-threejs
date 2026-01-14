@@ -1,0 +1,143 @@
+/* ModelManagerPanel Styles */
+
+.wex-model-manager {
+  background: var(--wex-bg-primary, rgba(0, 0, 0, 0.7));
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid var(--wex-border-color, rgba(255, 255, 255, 0.1));
+  overflow: hidden;
+  min-width: 280px;
+}
+
+.wex-model-manager-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--wex-border-color, rgba(255, 255, 255, 0.1));
+}
+
+.wex-model-manager-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--wex-text-primary, #fff);
+}
+
+.wex-model-manager-content {
+  padding: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.wex-model-manager-empty-text {
+  text-align: center;
+  color: var(--wex-text-muted);
+  font-size: 13px;
+  padding: 16px;
+  margin: 0;
+}
+
+/* Model List */
+.wex-model-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wex-model-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: var(--wex-bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.wex-model-item:hover {
+  background: var(--wex-bg-hover);
+  border-color: var(--wex-border-color);
+}
+
+.wex-model-item.hidden {
+  opacity: 0.5;
+}
+
+.wex-model-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wex-model-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--wex-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wex-model-meta {
+  font-size: 11px;
+  color: var(--wex-text-muted);
+}
+
+/* Actions */
+.wex-model-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.wex-model-action-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wex-bg-tertiary);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--wex-text-primary);
+}
+
+.wex-model-action-btn svg {
+  stroke: var(--wex-icon-color);
+}
+
+.wex-model-action-btn:hover {
+  background: var(--wex-bg-hover);
+  border-color: var(--wex-border-color);
+}
+
+.wex-model-action-danger:hover {
+  background: rgba(244, 67, 54, 0.3);
+  border-color: #f44336;
+}
+
+/* Scrollbar */
+.wex-model-manager-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wex-model-manager-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wex-model-manager-content::-webkit-scrollbar-thumb {
+  background: var(--wex-border-color-hover);
+  border-radius: 3px;
+}
+
+.wex-model-manager-content::-webkit-scrollbar-thumb:hover {
+  background: var(--wex-text-muted);
+}

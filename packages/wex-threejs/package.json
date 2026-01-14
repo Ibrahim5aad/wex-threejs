@@ -1,0 +1,71 @@
+{
+  "name": "@xbim/wex-threejs",
+  "version": "1.0.0",
+  "description": "React Three.js component library for viewing WexBIM 3D building models",
+  "type": "module",
+  "license": "MIT",
+  "author": "Ibrahim Saad",
+  "homepage": "https://github.com/Ibrahim5aad/WexThreeJS#readme",
+  "bugs": {
+    "url": "https://github.com/Ibrahim5aad/WexThreeJS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ibrahim5aad/WexThreeJS.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "keywords": [
+    "react",
+    "threejs",
+    "wexbim",
+    "bim",
+    "3d-viewer",
+    "building-models",
+    "xbim",
+    "ifc"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/wex-threejs.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "three": ">=0.150.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.182.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "three": "^0.182.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "dependencies": {
+    "zustand": "^5.0.10"
+  }
+}

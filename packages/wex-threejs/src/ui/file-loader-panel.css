@@ -1,0 +1,384 @@
+/* FileLoaderPanel Styles */
+
+.wex-file-loader-panel {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  width: 320px;
+  background: var(--wex-bg-secondary, rgba(20, 20, 30, 0.95));
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid var(--wex-border-color, rgba(255, 255, 255, 0.1));
+  overflow: hidden;
+  z-index: 200;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.wex-file-loader-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--wex-border-color, rgba(255, 255, 255, 0.1));
+  background: var(--wex-bg-tertiary, rgba(255, 255, 255, 0.03));
+}
+
+.wex-file-loader-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--wex-text-primary, #fff);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wex-close-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: var(--wex-bg-tertiary);
+  border-radius: 6px;
+  color: var(--wex-text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wex-close-btn svg {
+  stroke: var(--wex-icon-color);
+}
+
+.wex-close-btn:hover {
+  background: rgba(244, 67, 54, 0.3);
+  color: #f44336;
+}
+
+.wex-close-btn:hover svg {
+  stroke: #f44336;
+}
+
+/* Tabs */
+.wex-file-loader-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--wex-border-color);
+}
+
+.wex-tab {
+  flex: 1;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--wex-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.wex-tab svg {
+  stroke: currentColor;
+}
+
+.wex-tab:hover {
+  color: var(--wex-text-primary);
+  background: var(--wex-bg-tertiary);
+}
+
+.wex-tab.active {
+  color: var(--wex-accent-color);
+  border-bottom-color: var(--wex-accent-color);
+  background: var(--wex-accent-color-light);
+}
+
+/* Content */
+.wex-file-loader-content {
+  padding: 16px;
+}
+
+.wex-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Dropzone */
+.wex-dropzone {
+  border: 2px dashed var(--wex-border-color-hover);
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wex-dropzone svg {
+  stroke: var(--wex-icon-color);
+  opacity: 0.6;
+}
+
+.wex-dropzone:hover {
+  border-color: var(--wex-accent-color);
+  background: var(--wex-accent-color-light);
+}
+
+.wex-dropzone.drag-over {
+  border-color: var(--wex-accent-color);
+  background: var(--wex-accent-color-light);
+}
+
+.wex-dropzone.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.wex-dropzone-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.wex-dropzone-text {
+  color: var(--wex-text-secondary);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.wex-dropzone-or {
+  color: var(--wex-text-muted);
+  font-size: 11px;
+  margin: 8px 0;
+}
+
+.wex-browse-btn {
+  padding: 8px 16px;
+  background: var(--wex-accent-color-light);
+  border: 1px solid var(--wex-accent-color);
+  border-radius: 6px;
+  color: var(--wex-accent-color);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wex-browse-btn:hover:not(:disabled) {
+  background: var(--wex-accent-color-lighter);
+  border-color: var(--wex-accent-color-hover);
+}
+
+.wex-browse-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Selected File */
+.wex-selected-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(33, 150, 243, 0.15);
+  border: 1px solid rgba(33, 150, 243, 0.3);
+  border-radius: 8px;
+}
+
+.wex-file-icon {
+  font-size: 18px;
+}
+
+.wex-file-name {
+  flex: 1;
+  color: var(--wex-text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wex-file-size {
+  font-size: 11px;
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* URL Input */
+.wex-label {
+  color: var(--wex-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.wex-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--wex-bg-tertiary);
+  border: 1px solid var(--wex-border-color);
+  border-radius: 8px;
+  color: var(--wex-text-primary);
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.wex-input:focus {
+  border-color: var(--wex-accent-color);
+  background: var(--wex-bg-hover);
+}
+
+.wex-input::placeholder {
+  color: var(--wex-text-muted);
+}
+
+.wex-hint {
+  color: var(--wex-text-muted);
+  font-size: 11px;
+  margin: 4px 0 12px;
+}
+
+.wex-load-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--wex-accent-color);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.wex-load-btn:hover:not(:disabled) {
+  background: var(--wex-accent-color-hover);
+  transform: translateY(-1px);
+}
+
+.wex-load-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading */
+.wex-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  color: var(--wex-text-secondary);
+  font-size: 13px;
+}
+
+.wex-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--wex-border-color);
+  border-top-color: var(--wex-accent-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wex-progress {
+  width: 100%;
+  height: 6px;
+  background: var(--wex-bg-tertiary);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.wex-progress-bar {
+  height: 100%;
+  background: var(--wex-accent-color);
+  border-radius: 3px;
+  transition: width 0.2s;
+}
+
+.wex-progress-text {
+  position: absolute;
+  right: 0;
+  top: -18px;
+  font-size: 11px;
+  color: var(--wex-accent-color);
+}
+
+/* Error */
+.wex-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 8px;
+  color: #f44336;
+  font-size: 12px;
+}
+
+.wex-icon {
+  flex-shrink: 0;
+}
+
+/* Demo Models */
+.wex-demo-models {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--wex-border-color);
+}
+
+.wex-demo-label {
+  color: var(--wex-text-muted);
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.wex-demo-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wex-demo-btn {
+  padding: 8px 14px;
+  background: var(--wex-accent-color-light);
+  border: 1px solid var(--wex-accent-color);
+  border-radius: 6px;
+  color: var(--wex-accent-color);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wex-demo-btn:hover:not(:disabled) {
+  background: var(--wex-accent-color-lighter);
+  border-color: var(--wex-accent-color-hover);
+}
+
+.wex-demo-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

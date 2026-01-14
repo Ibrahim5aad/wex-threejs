@@ -1,0 +1,78 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/wex-threejs/**'
+      - '.github/workflows/publish.yml'
+      - 'package.json'
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      id-token: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: |
+          cd packages/wex-threejs
+          npm run lint || echo "Linter not configured, skipping..."
+        continue-on-error: true
+
+      - name: Build package
+        run: npm run build --workspace=@xbim/wex-threejs
+
+      - name: Check if version changed
+        id: version-check
+        run: |
+          cd packages/wex-threejs
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $CURRENT_VERSION"
+
+      - name: Publish to npm
+        if: |
+          github.event_name == 'release' || 
+          (github.event_name == 'push' && github.ref == 'refs/heads/main')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          cd packages/wex-threejs
+          npm publish --access public
+        continue-on-error: true
+
+      - name: Create GitHub Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            packages/wex-threejs/dist/**
+          draft: false
+          prerelease: false

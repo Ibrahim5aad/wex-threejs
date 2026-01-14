@@ -1,0 +1,9 @@
+/* @xbim/wex-threejs - Combined Styles */
+
+/* Theme variables (import first) */
+@import './ui/theme.css';
+
+/* Component styles */
+@import './ui/viewer-toolbar.css';
+@import './ui/model-manager-panel.css';
+@import './ui/file-loader-panel.css';

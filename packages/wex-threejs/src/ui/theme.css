@@ -1,0 +1,81 @@
+/* ============================================
+   WexThreeJS Theme Variables
+   ============================================
+   
+   Customize these CSS variables to change the 
+   look and feel of the viewer components.
+   
+   Usage:
+   .my-app {
+     --wex-accent-color: #ff6b6b;
+     --wex-accent-color-hover: #ff5252;
+   }
+   ============================================ */
+
+:root {
+  /* ==================== Dark Theme (default) ==================== */
+  
+  /* Accent color - used for active states, highlights */
+  --wex-accent-color: #4CAF50;
+  --wex-accent-color-hover: #66BB6A;
+  --wex-accent-color-light: rgba(76, 175, 80, 0.3);
+  --wex-accent-color-lighter: rgba(76, 175, 80, 0.4);
+  
+  /* 3D Viewer highlight colors */
+  --wex-selection-color: #2196F3;       /* Blue - selected elements */
+  --wex-hover-color: #4CAF50;           /* Green - hovered elements */
+  
+  /* Background colors */
+  --wex-bg-primary: rgba(0, 0, 0, 0.7);
+  --wex-bg-secondary: rgba(20, 20, 30, 0.95);
+  --wex-bg-tertiary: rgba(255, 255, 255, 0.1);
+  --wex-bg-hover: rgba(255, 255, 255, 0.2);
+  
+  /* Text colors */
+  --wex-text-primary: #ffffff;
+  --wex-text-secondary: rgba(255, 255, 255, 0.7);
+  --wex-text-muted: rgba(255, 255, 255, 0.5);
+  
+  /* Border colors */
+  --wex-border-color: rgba(255, 255, 255, 0.15);
+  --wex-border-color-hover: rgba(255, 255, 255, 0.3);
+  
+  /* Icon colors */
+  --wex-icon-color: #ffffff;
+  --wex-icon-color-active: var(--wex-accent-color);
+  
+  /* Separator */
+  --wex-separator-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==================== Light Theme ==================== */
+
+.theme-light {
+  /* Accent color for light theme */
+  --wex-accent-color: #2196F3;
+  --wex-accent-color-hover: #1976D2;
+  --wex-accent-color-light: rgba(33, 150, 243, 0.15);
+  --wex-accent-color-lighter: rgba(33, 150, 243, 0.25);
+  
+  /* Background colors */
+  --wex-bg-primary: rgba(255, 255, 255, 0.9);
+  --wex-bg-secondary: rgba(255, 255, 255, 0.95);
+  --wex-bg-tertiary: rgba(0, 0, 0, 0.05);
+  --wex-bg-hover: rgba(0, 0, 0, 0.1);
+  
+  /* Text colors */
+  --wex-text-primary: #333333;
+  --wex-text-secondary: rgba(0, 0, 0, 0.7);
+  --wex-text-muted: rgba(0, 0, 0, 0.5);
+  
+  /* Border colors */
+  --wex-border-color: rgba(0, 0, 0, 0.1);
+  --wex-border-color-hover: rgba(0, 0, 0, 0.2);
+  
+  /* Icon colors */
+  --wex-icon-color: #333333;
+  --wex-icon-color-active: var(--wex-accent-color);
+  
+  /* Separator */
+  --wex-separator-color: rgba(0, 0, 0, 0.2);
+}

@@ -1,14 +1,20 @@
 {
-  "name": "threejs-wexbim-loader",
+  "name": "wex-threejs-monorepo",
   "version": "1.0.0",
-  "main": "main.js",
+  "private": true,
+  "description": "WexThreeJS - React Three.js WexBIM Viewer Monorepo",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "start": "npx http-server -o index.html"
+    "dev": "npm run dev --workspace=@xbim/wex-threejs-demo",
+    "dev:lib": "npm run dev --workspace=@xbim/wex-threejs",
+    "build": "npm run build --workspace=@xbim/wex-threejs",
+    "build:demo": "npm run build --workspace=@xbim/wex-threejs-demo",
+    "build:all": "npm run build && npm run build:demo"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "three": "^0.172.0"
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

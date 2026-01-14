@@ -1,0 +1,242 @@
+/* ============================================
+   WexThreeJS Demo - Theme Customization Example
+   ============================================
+   
+   This demo shows how to override @xbim/wex-threejs 
+   theme variables to customize the UI colors.
+   
+   The library provides CSS variables you can override:
+   - --wex-accent-color: Main accent color
+   - --wex-accent-color-hover: Accent on hover
+   - --wex-accent-color-light: Light accent (for backgrounds)
+   - --wex-accent-color-lighter: Lighter accent (for hover states)
+   - --wex-bg-primary, --wex-bg-secondary, --wex-bg-tertiary
+   - --wex-text-primary, --wex-text-secondary, --wex-text-muted
+   - --wex-border-color, --wex-border-color-hover
+   - --wex-icon-color, --wex-icon-color-active
+   
+   See README.md for full documentation.
+   ============================================ */
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   THEME OVERRIDE EXAMPLE
+   ============================================
+   
+   Dark Theme: Teal accent (#00BCD4)
+   Light Theme: Purple accent (#9C27B0)
+   
+   You can change these to any colors you want!
+   ============================================ */
+
+/* Dark Theme - Custom Teal Accent */
+.app.theme-dark {
+  --wex-accent-color: #00BCD4;
+  --wex-accent-color-hover: #00ACC1;
+  --wex-accent-color-light: rgba(0, 188, 212, 0.3);
+  --wex-accent-color-lighter: rgba(0, 188, 212, 0.4);
+}
+
+/* Light Theme - Custom Purple Accent */
+.app.theme-light {
+  --wex-accent-color: #9C27B0;
+  --wex-accent-color-hover: #7B1FA2;
+  --wex-accent-color-light: rgba(156, 39, 176, 0.15);
+  --wex-accent-color-lighter: rgba(156, 39, 176, 0.25);
+}
+
+/* ============================================
+   DEMO-SPECIFIC STYLES
+   (These are for the demo app only, not the library)
+   ============================================ */
+
+/* Floating Buttons (demo-specific toggle buttons in top-left) */
+.floating-buttons {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 150;
+}
+
+.floating-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--wex-bg-primary);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--wex-border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.floating-btn svg {
+  stroke: var(--wex-icon-color);
+}
+
+.floating-btn:hover {
+  background: var(--wex-bg-hover);
+  border-color: var(--wex-border-color-hover);
+  transform: scale(1.05);
+}
+
+.floating-btn.active {
+  background: var(--wex-accent-color-light);
+  border-color: var(--wex-accent-color);
+}
+
+.floating-btn.active svg {
+  stroke: var(--wex-accent-color);
+}
+
+/* Model Manager Container (demo positioning) */
+.model-manager-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+/* Selection Info Panel (demo-specific) */
+.selection-info {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--wex-bg-secondary);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--wex-border-color);
+  z-index: 100;
+}
+
+.selection-badge {
+  color: var(--wex-accent-color);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.clear-selection-btn {
+  padding: 4px 12px;
+  background: rgba(244, 67, 54, 0.2);
+  border: 1px solid rgba(244, 67, 54, 0.4);
+  border-radius: 12px;
+  color: #f44336;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-selection-btn:hover {
+  background: rgba(244, 67, 54, 0.3);
+  border-color: #f44336;
+}
+
+/* Adjust file loader panel position (demo-specific) */
+.wex-file-loader-panel {
+  left: 60px;
+}
+
+/* Demo Models Overlay (shown when no models loaded) */
+.demo-models-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--wex-bg-secondary);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid var(--wex-border-color);
+  padding: 32px 40px;
+  text-align: center;
+  z-index: 50;
+}
+
+.demo-models-overlay h3 {
+  color: var(--wex-text-primary);
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.demo-models-overlay p {
+  color: var(--wex-text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.demo-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.demo-model-btn {
+  padding: 14px 28px;
+  background: var(--wex-accent-color-light);
+  border: 1px solid var(--wex-accent-color);
+  border-radius: 10px;
+  color: var(--wex-accent-color);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.demo-model-btn:hover {
+  background: var(--wex-accent-color-lighter);
+  border-color: var(--wex-accent-color-hover);
+  transform: translateY(-2px);
+}
+
+.open-loader-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--wex-bg-tertiary);
+  border: 1px solid var(--wex-border-color);
+  border-radius: 8px;
+  color: var(--wex-text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.open-loader-btn:hover {
+  background: var(--wex-bg-hover);
+  border-color: var(--wex-border-color-hover);
+  color: var(--wex-text-primary);
+}
+
+.open-loader-btn svg {
+  stroke: currentColor;
+}

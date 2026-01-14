@@ -133,15 +133,18 @@ class WexBIMLoader extends THREE.Loader {
           if (window.Worker) {
             this._parseWithWorker(data, startTime, onLoad, onProgress, onError);
           } else {
-            // Fallback to synchronous parsing
+            // Fallback to synchronous parsing (parse returns a Promise)
             const reader = new BinaryReader(data);
-            const parsedData = this.parse(reader);
-            
-            // Record parsing time
-            const parseEndTime = performance.now();
-            this.performanceStats.parseTime = (parseEndTime - startTime) / 1000;
-            
-            onLoad(parsedData);
+            this.parse(reader)
+              .then((parsedData) => {
+                // Record parsing time
+                const parseEndTime = performance.now();
+                this.performanceStats.parseTime = (parseEndTime - startTime) / 1000;
+                onLoad(parsedData);
+              })
+              .catch((error) => {
+                if (onError) onError(error);
+              });
           }
         } catch (error) {
           if (onError) {
@@ -161,7 +164,7 @@ class WexBIMLoader extends THREE.Loader {
   _parseWithWorker(arrayBuffer, startTime, onLoad, onProgress, onError) {
     try {
       // Create a new worker
-      const worker = new Worker(new URL('./WexBIMWorker.js', import.meta.url), { type: 'module' });
+      const worker = new Worker(new URL('./wexBimWorker.js', import.meta.url), { type: 'module' });
       
       // Listen for messages from the worker
       worker.onmessage = (e) => {
@@ -215,16 +218,17 @@ class WexBIMLoader extends THREE.Loader {
         console.log('Falling back to synchronous parsing...');
         worker.terminate();
         
-        // Fallback to synchronous parsing
-        try {
-          const reader = new BinaryReader(arrayBuffer);
-          const parsedData = this.parse(reader);
-          onLoad(parsedData);
-        } catch (parseError) {
-          if (onError) {
-            onError(parseError);
-          }
-        }
+        // Fallback to synchronous parsing (parse returns a Promise)
+        const reader = new BinaryReader(arrayBuffer);
+        this.parse(reader)
+          .then((parsedData) => {
+            onLoad(parsedData);
+          })
+          .catch((parseError) => {
+            if (onError) {
+              onError(parseError);
+            }
+          });
       };
       
       // Start the worker
@@ -235,10 +239,15 @@ class WexBIMLoader extends THREE.Loader {
       
     } catch (error) {
       console.error('Failed to create worker:', error);
-      // Fallback to synchronous parsing
+      // Fallback to synchronous parsing (parse returns a Promise)
       const reader = new BinaryReader(arrayBuffer);
-      const parsedData = this.parse(reader);
-      onLoad(parsedData);
+      this.parse(reader)
+        .then((parsedData) => {
+          onLoad(parsedData);
+        })
+        .catch((parseError) => {
+          if (onError) onError(parseError);
+        });
     }
   }
   
