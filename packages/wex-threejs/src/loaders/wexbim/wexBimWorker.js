@@ -2,7 +2,7 @@
 // This worker moves the heavy parsing work off the main thread
 
 // Import required parsers from a separate module
-import { BinaryReader } from './WexBIMLoader.js';
+import { BinaryReader } from './wexBimLoader.js';
 
 // Listen for messages from the main thread
 self.onmessage = function(e) {
