@@ -2,6 +2,12 @@
 
 A React component library for viewing WexBIM 3D building models using Three.js.
 
+[![npm version](https://img.shields.io/npm/v/wex-threejs.svg)](https://www.npmjs.com/package/wex-threejs)
+[![npm downloads](https://img.shields.io/npm/dm/wex-threejs.svg)](https://www.npmjs.com/package/wex-threejs)
+[![npm license](https://img.shields.io/npm/l/wex-threejs.svg)](https://www.npmjs.com/package/wex-threejs)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/wex-threejs)](https://bundlephobia.com/package/wex-threejs)
+[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/Ibrahim5aad/wex-threejs/publish.yml?label=publish)](https://github.com/Ibrahim5aad/wex-threejs/actions/workflows/publish.yml)
+
 ## Installation
 
 ```bash
