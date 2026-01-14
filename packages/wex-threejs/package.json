@@ -5,13 +5,13 @@
   "type": "module",
   "license": "MIT",
   "author": "Ibrahim Saad",
-  "homepage": "https://github.com/Ibrahim5aad/WexThreeJS#readme",
+  "homepage": "https://github.com/Ibrahim5aad/wex-threejs#readme",
   "bugs": {
-    "url": "https://github.com/Ibrahim5aad/WexThreeJS/issues"
+    "url": "https://github.com/Ibrahim5aad/wex-threejs/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ibrahim5aad/WexThreeJS.git"
+    "url": "https://github.com/Ibrahim5aad/wex-threejs.git"
   },
   "publishConfig": {
     "access": "public",

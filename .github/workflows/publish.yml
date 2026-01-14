@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-          # Uses OIDC (Trusted Publishing) - no token needed
+          # If NPM_TOKEN is set, it will be used; otherwise OIDC will be attempted
 
       - name: Extract version from tag
         id: version
@@ -71,7 +71,16 @@ jobs:
       - name: Publish to npm
         run: |
           cd packages/wex-threejs
+          # For brand new packages, npm Trusted Publishing (OIDC) may not work
+          # If this step fails, create an NPM_TOKEN secret in GitHub:
+          # 1. Go to https://www.npmjs.com/settings/YOUR_USERNAME/tokens
+          # 2. Generate a new "Automation" token with "Publish" permission
+          # 3. Add it as a secret: GitHub repo > Settings > Secrets > Actions > New secret
+          #    Name: NPM_TOKEN, Value: your token
+          # After first publish, you can remove NPM_TOKEN and use OIDC only
           npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
