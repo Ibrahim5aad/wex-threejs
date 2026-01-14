@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useImperativeHandle, forwardRef, useCallback, useState, useMemo } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-// @ts-expect-error - JS file without types
 import { WexBIMLoader } from '../loaders/wexbim/wexBimLoader.js';
 import { DEFAULT_VIEWER_SETTINGS } from '../types';
 import type {
