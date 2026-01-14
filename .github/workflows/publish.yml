@@ -30,6 +30,7 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+          # Uses OIDC (Trusted Publishing) - no token needed
 
       - name: Extract version from tag
         id: version
@@ -68,11 +69,9 @@ jobs:
         run: npm run build --workspace=@xbim/wex-threejs
 
       - name: Publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd packages/wex-threejs
-          npm publish --access public
+          npm publish --access public --provenance
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
